@@ -1,0 +1,58 @@
+:root {
+    --main-blue: #592efb;
+    --main-blue-dark: #461ae6;
+    --basic-white: #ffffff;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+h5 {
+    height: 2rem;
+}
+
+small.card-text svg {
+    color: var(--main-blue);
+}
+
+h6#price {
+    color: var(--main-blue);
+}
+
+a.event-card {
+    text-decoration: none;
+    color: black;
+}
+
+a.event-card .card img {
+    border-radius: 16px 16px 0 0;
+}
+
+a.event-card .card {
+    border: none;
+    border-radius: 16px;
+    transition-duration: 200ms;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+a.event-card:hover .card {
+    border: none;
+    border-radius: 16px;
+    transition-duration: 200ms;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+}
+
+@media screen and (max-width: 992px) {
+    .card-img-top {
+        height: 25vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .card-img-top {
+        height: 55vw;
+    }
+}
