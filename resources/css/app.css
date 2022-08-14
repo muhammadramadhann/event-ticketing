@@ -1,3 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --main-blue: #592efb;
+    --main-blue-dark: #461ae6;
+    --main-blue-light: #eae8f8;
+    --basic-white: #ffffff;
+}
+
+* {
+    font-family: "Figtree", sans-serif;
+}
+
+.btn-main-blue {
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+    color: var(--basic-white);
+    transition: ease-in 300ms;
+}
+
+.btn-main-blue:hover,
+.btn-main-blue:focus {
+    background-color: var(--main-blue-dark);
+    border-color: var(--main-blue-dark);
+    color: var(--basic-white);
+}
+
+.btn-outline-blue {
+    background-color: var(--main-blue-light);
+    border-color: var(--main-blue-light);
+    color: var(--main-blue);
+    transition: ease-in 300ms;
+}
+
+.btn-outline-blue:hover,
+.btn-outline-blue:focus {
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+    color: var(--basic-white);
+    transition: ease-in 300ms;
+}
+
+.btn-border-blue {
+    background-color: transparent;
+    border-color: var(--main-blue);
+    color: black;
+    transition: ease-in 300ms;
+}
+
+.btn-border-blue:hover,
+.btn-border-blue:focus {
+    background-color: transparent;
+    border-color: var(--main-blue);
+    color: var(--main-blue);
+}
+
+.text-main-blue {
+    color: var(--main-blue);
+}

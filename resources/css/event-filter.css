@@ -1,0 +1,9 @@
+:root {
+    --main-blue: #592efb;
+    --main-blue-dark: #461ae6;
+    --basic-white: #ffffff;
+}
+
+.filter-options svg {
+    color: var(--main-blue);
+}
