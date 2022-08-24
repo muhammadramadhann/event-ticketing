@@ -4,11 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../css/event-header.css";
 
-export default function EventHeader({ onSearchItem, keyword }) {
-    const onChangeSearchHandler = (event) => {
-        onSearchItem(event.target.value);
-    };
-
+export default function EventHeader({ onKeywordChange, keyword }) {
     return (
         <section id="event-header" className="mb-4">
             <div className="row align-items-end">
@@ -22,7 +18,7 @@ export default function EventHeader({ onSearchItem, keyword }) {
                     </p>
                 </div>
                 <div className="col-lg-5">
-                    <div className="input-group">
+                    <div className="input-group search-group">
                         <Input
                             type="text"
                             name="search"
@@ -30,9 +26,9 @@ export default function EventHeader({ onSearchItem, keyword }) {
                             className="form-control px-3"
                             placeholder="Event's name..."
                             autoComplete="off"
-                            handleChange={onChangeSearchHandler}
+                            handleChange={onKeywordChange}
                         />
-                        <span className="input-group-text px-3 bg-white">
+                        <span className="input-group-text search px-3 bg-white">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </span>
                     </div>

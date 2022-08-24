@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { Link } from "@inertiajs/inertia-react";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faBuilding } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,26 +28,30 @@ export default function EventCard({
     }
 
     return (
-        <div className="card h-100">
-            <img src={poster} className="card-img-top" alt={slug} />
-            <div className="card-body">
-                <h5 className="card-title fw-bold mb-4">{title}</h5>
-                <div className="mb-2">
-                    <small className="card-text">
-                        <FontAwesomeIcon icon={faCalendar} />
-                        <span className="ms-2">{event_date}</span>
-                    </small>
+        <div className="col">
+            <Link href={slug} className="event-card">
+                <div className="card h-100">
+                    <img src={poster} className="card-img-top" alt={slug} />
+                    <div className="card-body">
+                        <h5 className="card-title fw-bold mb-4">{title}</h5>
+                        <div className="mb-2">
+                            <small className="card-text">
+                                <FontAwesomeIcon icon={faCalendar} />
+                                <span className="ms-2">{event_date}</span>
+                            </small>
+                        </div>
+                        <div className="mb-3">
+                            <small className="card-text d-block">
+                                <FontAwesomeIcon icon={faBuilding} />
+                                <span className="ms-2">{city}</span>
+                            </small>
+                        </div>
+                        <h6 id="price" className="card-text fw-bold mb-2">
+                            {price_format}
+                        </h6>
+                    </div>
                 </div>
-                <div className="mb-3">
-                    <small className="card-text d-block">
-                        <FontAwesomeIcon icon={faBuilding} />
-                        <span className="ms-2">{city}</span>
-                    </small>
-                </div>
-                <h6 id="price" className="card-text fw-bold mb-2">
-                    {price_format}
-                </h6>
-            </div>
+            </Link>
         </div>
     );
 }

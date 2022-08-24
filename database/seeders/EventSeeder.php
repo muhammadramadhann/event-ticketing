@@ -51,7 +51,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Kembali Beraktivitas Setelah Masa Pandemi',
                 'slug' => 'kembali-beraktivitas-setelah-masa-pandemi',
-                'category' => 'Seminar',
+                'category' => 'Webinar',
                 'price' => 0,
                 'poster' => 'https://images.unsplash.com/photo-1568750655107-5f50598fc8a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80',
                 'organizer' => 'Kemendikbud',
