@@ -1,84 +1,90 @@
 import React from "react";
-import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FilterSidebar from "./Filter/FilterSidebar";
 import "../../../css/event-filter.css";
 
-const EventFilter = ({ isFound, totalFound, totalEvents }) => {
+export default function EventFilter({
+    isFound,
+    totalFound,
+    selectedSort,
+    onSelectedSort,
+    onCheckedFilter,
+}) {
     let initNumber = 0;
     if (isFound) {
-        initNumber = 1 + " - " + totalFound;
+        initNumber = `1 - ${totalFound}`;
     }
 
     return (
         <section id="event-filter" className="mb-4">
             <div className="row pb-4 justify-content-between align-items-center">
                 <div className="col-sm-6">
-                    <button
-                        className="btn btn-border-blue fw-bold px-4 filter-options"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasFilterOptions"
-                        aria-controls="offcanvasFilterOptions"
-                    >
-                        <FontAwesomeIcon icon={faArrowDownShortWide} />
-                        <span className="ms-2">Filter</span>
-                    </button>
-
-                    <div
-                        className="offcanvas offcanvas-start"
-                        data-bs-scroll="true"
-                        tabIndex="-1"
-                        id="offcanvasFilterOptions"
-                        aria-labelledby="offcanvasFilterOptionsLabel"
-                    >
-                        <div className="offcanvas-header">
-                            <h5
-                                className="offcanvas-title"
-                                id="offcanvasFilterOptionsLabel"
-                            >
-                                Backdrop with scrolling
-                            </h5>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="offcanvas"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div className="offcanvas-body">
-                            <p>
-                                Try scrolling the rest of the page to see this
-                                option in action.
-                            </p>
-                        </div>
-                    </div>
+                    <FilterSidebar checkedFilterEvent={onCheckedFilter} />
                 </div>
+
                 <div className="col-sm-6 text-sm-end text-start">
                     <div className="row justify-content-between align-items-center">
-                        <div className="col-sm-6">
+                        <div className="col-sm-6 text-sm-auto text-end">
                             <small>
                                 Showing{" "}
                                 <span className="fw-bold">{initNumber}</span> of{" "}
-                                <span className="fw-bold">{totalEvents}</span>{" "}
+                                <span className="fw-bold">{totalFound}</span>{" "}
                                 <span className="text-main-blue">events</span>
                             </small>
                         </div>
-                        <div className="col-sm-6 order-sm-last order-first">
+                        <div className="col-sm-6 order-sm-last order-first mb-sm-0 mb-3">
                             <select
                                 className="form-select"
-                                aria-label="Default select example"
+                                name="sort_by"
+                                defaultValue={selectedSort}
+                                onChange={onSelectedSort}
                             >
-                                <option value="">Nearest date</option>
-                                <option value="1">Furthest date</option>
-                                <option value="2">Lowest price</option>
-                                <option value="3">Highest price</option>
+                                <option disabled value="">
+                                    Sort by
+                                </option>
+                                <option value="nearest_date">
+                                    Nearest date
+                                </option>
+                                <option value="furthest_date">
+                                    Furthest date
+                                </option>
+                                <option value="lowest_price">
+                                    Lowest price
+                                </option>
+                                <option value="highest_price">
+                                    Highest price
+                                </option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* {filters !== undefined ? (
+                <div className="d-flex flex-wrap justify-content-start align-items-center">
+                    {filters.map((element, index) => (
+                        <div key={index} className="me-2 mb-2">
+                            <div className="filter-item d-flex justify-content-center">
+                                <div>
+                                    <small>{element}</small>
+                                </div>
+                                <div className="ms-3">
+                                    <form action="">
+                                        <input
+                                            type="hidden"
+                                            name="remove"
+                                            value={element}
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="btn btn-close"
+                                        ></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ) : null} */}
         </section>
     );
-};
-
-export default EventFilter;
+}
