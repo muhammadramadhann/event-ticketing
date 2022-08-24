@@ -4,18 +4,18 @@
     --basic-white: #ffffff;
 }
 
-.input-group input {
+.input-group.search-group input {
     border-right: none;
 }
 
-.input-group input:focus {
+.input-group.search-group input:focus {
     outline: none;
     box-shadow: none;
     border: 1px solid #ced4da;
     border-right: none;
 }
 
-.input-group-text {
+.input-group-text.search {
     border-left: none;
 }
 

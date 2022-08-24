@@ -2,45 +2,77 @@ import React, { useState } from "react";
 import EventHeader from "./EventHeader";
 import EventFilter from "./EventFilter";
 import EventList from "./EventList";
+import moment from "moment";
 
 export default function Events({ items }) {
-    // length of event data from database
-    const countItems = items.length;
+    let count = 0;
+    let exist = false;
 
-    // declaration data is exist or not
-    let exist = true;
+    const [sortBy, setSortBy] = useState("");
+    const [keyword, setKeyword] = useState("");
 
-    // declaration for displayed data right now
-    let countFoundItem = 0;
-
-    const [search, setSearch] = useState("");
-
-    const filteredItems = items.filter((item) => {
-        if (search === "") {
-            return items;
-        }
-        return item.title.toLowerCase().includes(search.toLowerCase());
-    });
-
-    if (filteredItems.length !== 0) {
-        countFoundItem += filteredItems.length;
-    } else {
-        exist = false;
-    }
-
-    const onSearchItemHandler = (keyword) => {
-        setSearch(keyword);
+    const onKeywordChangeHandler = (e) => {
+        setKeyword(e.target.value);
     };
 
+    const onSelectedSortHandler = (e) => {
+        setSortBy(e.target.value);
+    };
+
+    const sortedEvents = items.data.slice().sort((a, b) => {
+        const sortTypes = {
+            nearest_date: "nearest_date",
+            furthest_date: "furthest_date",
+            lowest_price: "lowest_price",
+            highest_price: "highest_price",
+        };
+
+        switch (sortBy) {
+            case sortTypes.nearest_date:
+                return (
+                    moment(a.start_date).format("YYYYMMDD") -
+                    moment(b.start_date).format("YYYYMMDD")
+                );
+            case sortTypes.furthest_date:
+                return (
+                    moment(b.start_date).format("YYYYMMDD") -
+                    moment(a.start_date).format("YYYYMMDD")
+                );
+            case sortTypes.lowest_price:
+                return a.price - b.price;
+            case sortTypes.highest_price:
+                return b.price - a.price;
+            default:
+                break;
+        }
+    });
+
+    const foundEvents = sortedEvents.filter((item) => {
+        if (keyword !== "") {
+            return item.title.toLowerCase().includes(keyword.toLowerCase());
+        } else {
+            return item;
+        }
+    });
+
+    if (foundEvents.length !== 0) {
+        count = count += foundEvents.length;
+        exist = true;
+    }
+
     return (
-        <main>
-            <EventHeader keyword={search} onSearchItem={onSearchItemHandler} />
+        <>
+            <EventHeader
+                keyword={keyword}
+                onKeywordChange={onKeywordChangeHandler}
+            />
             <EventFilter
                 isFound={exist}
-                totalFound={countFoundItem}
-                totalEvents={countItems}
+                totalFound={count}
+                selectedSort={sortBy}
+                onSelectedSort={onSelectedSortHandler}
             />
-            <EventList items={filteredItems} />
-        </main>
+            <EventList events={foundEvents} />
+        </>
     );
 }

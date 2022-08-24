@@ -8,7 +8,7 @@ export default function Navbar({ auth }) {
     return (
         <nav className="navbar navbar-expand-lg bg-white border-bottom py-3">
             <div className="container">
-                <Link className="navbar-brand fw-bold text-main-blue" href="#">
+                <Link className="navbar-brand fw-bold text-main-blue" to="/">
                     Event Ticketing
                 </Link>
                 <button
@@ -59,7 +59,7 @@ export default function Navbar({ auth }) {
                         ) : (
                             <>
                                 <Link
-                                    href=""
+                                    href="/login"
                                     className="btn btn-outline-blue mb-lg-0 mb-2"
                                 >
                                     Log In
