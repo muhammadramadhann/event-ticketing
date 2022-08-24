@@ -52,7 +52,7 @@ export default function Navbar({ auth }) {
                                     role="button"
                                     aria-expanded="false"
                                 >
-                                    Ramadhan
+                                    {auth.user.name}
                                 </Link>
                                 <Dropdown main={false} />
                             </div>
@@ -66,7 +66,7 @@ export default function Navbar({ auth }) {
                                 </Link>
                                 <Link
                                     className="btn btn-main-blue ms-lg-2 ms-0"
-                                    href="#"
+                                    href="/register"
                                 >
                                     Register
                                 </Link>

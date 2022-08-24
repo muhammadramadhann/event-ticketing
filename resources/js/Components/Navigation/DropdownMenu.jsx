@@ -6,9 +6,20 @@ export default function DropdownMenu({ items }) {
         <>
             {items.map((item) => (
                 <li key={item.id}>
-                    <Link className="dropdown-item" href={item.path}>
-                        {item.title}
-                    </Link>
+                    {item.title === "Log Out" ? (
+                        <Link
+                            className="dropdown-item"
+                            href={route(item.path)}
+                            as="button"
+                            method="post"
+                        >
+                            {item.title}
+                        </Link>
+                    ) : (
+                        <Link className="dropdown-item" href={item.path}>
+                            {item.title}
+                        </Link>
+                    )}
                 </li>
             ))}
         </>

@@ -30,8 +30,8 @@ export default function Dropdown({ main = true }) {
             },
             {
                 id: 2,
-                title: "Log out",
-                path: "",
+                title: "Log Out",
+                path: "logout",
             },
         ];
     }

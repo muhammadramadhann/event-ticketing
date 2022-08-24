@@ -55,3 +55,8 @@
 .text-main-blue {
     color: var(--main-blue);
 }
+
+input.form-check-input:checked {
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+}
