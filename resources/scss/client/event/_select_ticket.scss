@@ -1,0 +1,102 @@
+a.back {
+    text-decoration: none;
+    color: black;
+}
+
+#event-highlight .card {
+    border-color: $main-blue;
+    & h6 {
+        font-size: 18px;
+    }
+}
+
+#price-calculation .card {
+    border-color: $main-blue;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    & p,
+    & span {
+        font-size: 14px;
+    }
+}
+
+#select-number-ticket .card {
+    background-color: $main-blue-light;
+    border: $main-blue-light;
+    & h6 {
+        font-size: 18px;
+    }
+    & p {
+        font-size: 14px;
+    }
+    & input.form-control {
+        max-width: 48px;
+        border: none;
+        text-align: center;
+        cursor: default;
+    }
+    & input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+#event-highlight .highlight-poster {
+    position: relative;
+    margin-right: 16px;
+    &:after {
+        content: "";
+        padding: 80px 1px;
+        margin-left: 20px;
+        right: -10%;
+        background: $main-blue;
+    }
+    & img {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+}
+
+#event-highlight .event-info span {
+    font-size: 14px;
+}
+
+#price-calculation .price-jumbotron {
+    margin-left: 0 !important;
+    background: $main-blue-light;
+}
+
+#price-calculation .total-price {
+    color: #e83c3c;
+    font-size: 18px;
+}
+
+@media (max-width: 992px) {
+    #price-calculation .card {
+        border-color: transparent;
+    }
+}
+
+@media (max-width: 576px) {
+    #select-number-ticket .card {
+        & .btn.btn-minus,
+        .btn.btn-plus {
+            width: 36px;
+            height: 32px;
+            & img {
+                width: 10px;
+                margin-bottom: 6px;
+            }
+        }
+        & input.form-control {
+            padding: 0;
+        }
+    }
+
+    #select-number-ticket .card {
+        & h6 {
+            font-size: 16px;
+        }
+    }
+}

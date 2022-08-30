@@ -4,9 +4,8 @@ import { Link } from "@inertiajs/inertia-react";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { faBuilding } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../../css/event-card.css";
 
-export default function EventCard({
+export default function Card({
     slug,
     title,
     poster,
@@ -22,14 +21,14 @@ export default function EventCard({
         ).format("LL")}`;
     }
 
-    let price_format = `Rp${price.toLocaleString()}`;
+    let price_format = `Rp ${price.toLocaleString()}`;
     if (price === 0) {
         price_format = "Free";
     }
 
     return (
         <div className="col">
-            <Link href={slug} className="event-card">
+            <Link href={`/event/${slug}`} className="event-card">
                 <div className="card h-100">
                     <img src={poster} className="card-img-top" alt={slug} />
                     <div className="card-body">

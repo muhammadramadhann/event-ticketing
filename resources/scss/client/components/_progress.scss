@@ -1,0 +1,142 @@
+#booking-progress .progress-container {
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin not-last-child($selector) {
+    & #{$selector}:not(:last-child) {
+        @content;
+    }
+}
+
+#booking-progress .progressbar {
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    counter-reset: step;
+    text-align: center;
+    @include not-last-child("li") {
+        margin-right: 48px;
+    }
+    li {
+        list-style: none;
+        color: $light-gray;
+        background-color: $basic-white;
+        position: relative;
+        width: 140px;
+        &:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 30px;
+            height: 30px;
+            border: 2px solid $light-gray;
+            background: $light-gray;
+            color: $basic-white;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            line-height: 27px;
+            margin-right: 12px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: $light-gray;
+            top: 15px;
+            left: -50%;
+            z-index: -1;
+        }
+        &:first-child:after {
+            content: none;
+        }
+        &.active-progress {
+            color: black;
+            &:before {
+                background: $main-blue;
+                border-color: $main-blue;
+            }
+            &:after {
+                background: $main-blue;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #booking-progress .progressbar {
+        @include not-last-child("li") {
+            margin-right: 40px;
+        }
+        li {
+            width: 110px;
+            &:before {
+                width: 24px;
+                height: 24px;
+                line-height: 20px;
+                margin-right: 8px;
+            }
+            &:after {
+                top: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    #booking-progress .progressbar {
+        @include not-last-child("li") {
+            margin-right: 16px;
+        }
+        li {
+            &:first-child {
+                width: 100px;
+            }
+            &:nth-child(2) {
+                width: 95px;
+            }
+            &:nth-child(3) {
+                width: 84px;
+            }
+            width: 88px;
+            font-size: 14px;
+            &:before {
+                width: 20px;
+                height: 20px;
+                line-height: 16px;
+                margin-right: 4px;
+            }
+            &:after {
+                top: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 424px) {
+    #booking-progress .progressbar {
+        @include not-last-child("li") {
+            margin-right: 12px;
+        }
+        li {
+            width: 60px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            &:before {
+                width: 18px;
+                height: 18px;
+                line-height: 12px;
+            }
+            &:after {
+                width: 100%;
+                left: -50%;
+            }
+        }
+    }
+}

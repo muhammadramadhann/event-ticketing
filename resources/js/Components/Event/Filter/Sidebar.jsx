@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import FilterItem from "./FilterItem";
+import Item from "./Item";
 import { filterCategories } from "../../../constants";
 import { filterPrices } from "../../../constants";
 import { filterLocations } from "../../../constants";
 import { faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function FilterSidebar({ checkedFilterEvent }) {
+export default function Sidebar({ checkedFilterEvent }) {
     const [price, setPrice] = useState(true);
 
     const onCheckedFilterEvent = (event) => {
@@ -56,7 +56,7 @@ export default function FilterSidebar({ checkedFilterEvent }) {
                                 <p className="fw-bold">Category</p>
                             </div>
                             {filterCategories.map((item, index) => (
-                                <FilterItem
+                                <Item
                                     key={item.id}
                                     index={index}
                                     title={item.title}
@@ -69,7 +69,7 @@ export default function FilterSidebar({ checkedFilterEvent }) {
                                 <p className="fw-bold">Price</p>
                             </div>
                             {filterPrices.map((item, index) => (
-                                <FilterItem
+                                <Item
                                     key={item.id}
                                     index={index}
                                     title={item.title}
@@ -111,7 +111,7 @@ export default function FilterSidebar({ checkedFilterEvent }) {
                             <p className="fw-bold">Location</p>
                         </div>
                         {filterLocations.map((item, index) => (
-                            <FilterItem
+                            <Item
                                 key={item.id}
                                 index={index}
                                 title={item.title}

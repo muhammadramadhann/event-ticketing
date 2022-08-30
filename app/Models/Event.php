@@ -27,8 +27,13 @@ class Event extends Model
         "status"
     ];
 
-    // public function getStartDateAttribute()
-    // {
-    //     return Carbon::parse($this->attributes["start_date"])->translatedFormat("d F Y");
-    // }
+    public function getStartTimeAttribute()
+    {
+        return Carbon::parse($this->attributes["start_time"])->translatedFormat("H:i");
+    }
+
+    public function getEndTimeAttribute()
+    {
+        return Carbon::parse($this->attributes["end_time"])->translatedFormat("H:i");
+    }
 }

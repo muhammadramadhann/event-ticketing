@@ -1,0 +1,16 @@
+.footer-link a {
+    text-decoration: none;
+    color: $dim-white;
+    &:hover {
+        transition: all 0.2s;
+        color: $basic-white;
+    }
+}
+
+svg.fa-square-instagram,
+svg.fa-linkedin,
+svg.fa-square-facebook,
+svg.fa-youtube {
+    color: $basic-white;
+    font-size: 20px;
+}

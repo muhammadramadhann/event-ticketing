@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class EventClientController extends Controller
 {
@@ -33,8 +32,83 @@ class EventClientController extends Controller
         // }
 
         $events = Event::paginate(9);
-        return inertia('Home', [
+        return inertia('Event/index', [
             'events' => $events
+        ]);
+    }
+
+    public function detail(Event $event)
+    {
+        return inertia('Event/Detail', [
+            'event' => $event
+        ]);
+    }
+
+    private function checkEventRegisOngoing($start_date, $current_date)
+    {
+        if ($current_date >= $start_date) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function checkCapacity($capacity)
+    {
+        if ($capacity < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function selectTicket(Event $event)
+    {
+        // check if user is bandel try to masuk2in parameters in url-nya pfft
+        $start_date = date('Y-m-d', strtotime(($event->start_date)));
+        $current_date = date('Y-m-d');
+
+        if ($this->checkEventRegisOngoing($start_date, $current_date) || $this->checkCapacity($event->capacity)) {
+            return redirect()->back();
+        }
+
+        // check if event is free
+        if ($event->price === 0) {
+            return redirect()->route('event.detail.booking', [
+                $event->slug,
+                'tickets' => 1
+            ]);
+        }
+
+        return inertia('Event/SelectTicket', [
+            'event' => $event
+        ]);
+    }
+
+    public function booking(Request $request, Event $event)
+    {
+        $total_tickets = $request->query('tickets');
+        $start_date = date('Y-m-d', strtotime(($event->start_date)));
+        $current_date = date('Y-m-d');
+
+        if ($this->checkEventRegisOngoing($start_date, $current_date) || $this->checkCapacity($event->capacity)) {
+            return redirect()->route('event.detail', $event->slug);
+        }
+
+        if ($event->price != 0 && $total_tickets > 3) {
+            return redirect()->route('event.detail.booking', [
+                $event->slug,
+                'tickets' => 3
+            ]);
+        } else if ($event->price == 0 && $total_tickets > 1) {
+            return redirect()->route('event.detail.booking', [
+                $event->slug,
+                'tickets' => 1
+            ]);
+        }
+
+        return inertia('Event/BookData', [
+            'event' => $event,
         ]);
     }
 }

@@ -1,0 +1,69 @@
+@import "client/colors";
+@import "client/components/navbar";
+@import "client/components/footer";
+@import "client/components/progress";
+@import "client/components/modal";
+@import "client/event/card";
+@import "client/event/detail";
+@import "client/event/select_ticket";
+@import "client/event/pages";
+
+* {
+    font-family: "Figtree", sans-serif;
+}
+
+.btn-main-blue {
+    background-color: $main-blue;
+    border-color: $main-blue;
+    color: $basic-white;
+    transition: ease-in 300ms;
+    &:hover,
+    &:focus {
+        background-color: $main-blue-dark;
+        border-color: $main-blue-dark;
+        color: $basic-white;
+    }
+}
+
+.btn-outline-blue {
+    background-color: $main-blue-light;
+    border-color: $main-blue-light;
+    color: $main-blue;
+    transition: ease-in 300ms;
+    &:hover,
+    &:focus {
+        background-color: $main-blue;
+        border-color: $main-blue;
+        color: $basic-white;
+    }
+}
+
+.btn-border-blue {
+    background-color: transparent;
+    border-color: $main-blue;
+    color: black;
+    transition: ease-in 300ms;
+    &:hover,
+    &:focus {
+        background-color: transparent;
+        border-color: $main-blue;
+        color: $main-blue;
+    }
+}
+
+.text-main-blue {
+    color: $main-blue;
+}
+
+.bg-main-blue {
+    background-color: $main-blue;
+}
+
+.bg-main-blue-dark {
+    background-color: $main-blue-dark;
+}
+
+input.form-check-input:checked {
+    background-color: $main-blue;
+    border-color: $main-blue;
+}

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import Button from "@/Components/Button";
-import Checkbox from "@/Components/Checkbox";
+import Button from "@/Components/Partials/Button";
+import Checkbox from "@/Components/Partials/Checkbox";
 import Guest from "@/Layouts/Guest";
-import Input from "@/Components/Input";
-import InputError from "@/Components/InputError";
-import Label from "@/Components/Label";
+import Input from "@/Components/Partials/Input";
+import InputError from "@/Components/Partials/InputError";
+import Label from "@/Components/Partials/Label";
 import { Head, Link, useForm } from "@inertiajs/inertia-react";
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
