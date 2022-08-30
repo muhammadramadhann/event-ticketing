@@ -1,8 +1,7 @@
 import React from "react";
-import Input from "../Input";
+import Input from "../Partials/Input";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../../css/event-header.css";
 
 export default function EventHeader({ onKeywordChange, keyword }) {
     return (

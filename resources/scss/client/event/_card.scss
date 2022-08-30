@@ -1,9 +1,3 @@
-:root {
-    --main-blue: #592efb;
-    --main-blue-dark: #461ae6;
-    --basic-white: #ffffff;
-}
-
 .card-img-top {
     width: 100%;
     height: 15vw;
@@ -15,11 +9,11 @@ h5 {
 }
 
 small.card-text svg {
-    color: var(--main-blue);
+    color: $main-blue;
 }
 
 h6#price {
-    color: var(--main-blue);
+    color: $main-blue;
 }
 
 a.event-card {

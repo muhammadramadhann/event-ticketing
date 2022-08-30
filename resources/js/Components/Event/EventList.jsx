@@ -1,5 +1,5 @@
 import React from "react";
-import EventCard from "./EventCard";
+import Card from "./Design/Card";
 
 export default function EventList({ events }) {
     if (events.length === 0) {
@@ -15,7 +15,7 @@ export default function EventList({ events }) {
         <section id="event-list" className="mb-4">
             <div className="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 g-4">
                 {events.map((event, index) => (
-                    <EventCard
+                    <Card
                         key={event.id}
                         title={event.title}
                         slug={event.slug}

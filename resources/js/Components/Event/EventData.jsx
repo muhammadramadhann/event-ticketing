@@ -1,8 +1,7 @@
 import React from "react";
-import FilterSidebar from "./Filter/FilterSidebar";
-import "../../../css/event-filter.css";
+import Sidebar from "./Filter/Sidebar";
 
-export default function EventFilter({
+export default function EventData({
     isFound,
     totalFound,
     selectedSort,
@@ -18,7 +17,7 @@ export default function EventFilter({
         <section id="event-filter" className="mb-4">
             <div className="row pb-4 justify-content-between align-items-center">
                 <div className="col-sm-6">
-                    <FilterSidebar checkedFilterEvent={onCheckedFilter} />
+                    <Sidebar checkedFilterEvent={onCheckedFilter} />
                 </div>
 
                 <div className="col-sm-6 text-sm-end text-start">

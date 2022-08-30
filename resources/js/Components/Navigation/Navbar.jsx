@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "@inertiajs/inertia-react";
 import NavLink from "./NavLink";
 import Dropdown from "./Dropdown";
-import "../../../css/navbar.css";
 
 export default function Navbar({ auth }) {
     return (
         <nav className="navbar navbar-expand-lg bg-white border-bottom py-3">
             <div className="container">
-                <Link className="navbar-brand fw-bold text-main-blue" to="/">
+                <Link
+                    className="navbar-brand fw-bold text-main-blue"
+                    href={route("event")}
+                >
                     Event Ticketing
                 </Link>
                 <button
@@ -27,7 +29,7 @@ export default function Navbar({ auth }) {
                     id="navbarNavAltMarkup"
                 >
                     <div className="navbar-nav ms-lg-3 ms-0">
-                        <NavLink href="/">Home</NavLink>
+                        <NavLink href={route("event")}>Home</NavLink>
                         <NavLink href="">Services</NavLink>
                         <div className="nav-item dropdown">
                             <Link
@@ -52,7 +54,7 @@ export default function Navbar({ auth }) {
                                     role="button"
                                     aria-expanded="false"
                                 >
-                                    Ramadhan
+                                    {auth.user.name}
                                 </Link>
                                 <Dropdown main={false} />
                             </div>
@@ -66,7 +68,7 @@ export default function Navbar({ auth }) {
                                 </Link>
                                 <Link
                                     className="btn btn-main-blue ms-lg-2 ms-0"
-                                    href="#"
+                                    href="/register"
                                 >
                                     Register
                                 </Link>

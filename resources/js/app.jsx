@@ -1,5 +1,4 @@
 import "./bootstrap";
-import "../css/app.css";
 
 import React from "react";
 import { render } from "react-dom";
@@ -11,7 +10,7 @@ const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => `${title}`,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.jsx`,

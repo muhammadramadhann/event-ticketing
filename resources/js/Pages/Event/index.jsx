@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import EventHeader from "./EventHeader";
-import EventFilter from "./EventFilter";
-import EventList from "./EventList";
+import { Head } from "@inertiajs/inertia-react";
+import Authenticated from "@/Layouts/Authenticated";
+import EventHeader from "@/Components/Event/EventHeader";
+import EventData from "@/Components/Event/EventData";
+import EventList from "@/Components/Event/EventList";
 import moment from "moment";
 
-export default function Events({ items }) {
+export default function Event({ auth, events }) {
     let count = 0;
     let exist = false;
 
@@ -19,7 +21,7 @@ export default function Events({ items }) {
         setSortBy(e.target.value);
     };
 
-    const sortedEvents = items.data.slice().sort((a, b) => {
+    const sortedEvents = events.data.slice().sort((a, b) => {
         const sortTypes = {
             nearest_date: "nearest_date",
             furthest_date: "furthest_date",
@@ -61,18 +63,21 @@ export default function Events({ items }) {
     }
 
     return (
-        <>
-            <EventHeader
-                keyword={keyword}
-                onKeywordChange={onKeywordChangeHandler}
-            />
-            <EventFilter
-                isFound={exist}
-                totalFound={count}
-                selectedSort={sortBy}
-                onSelectedSort={onSelectedSortHandler}
-            />
-            <EventList events={foundEvents} />
-        </>
+        <Authenticated auth={auth}>
+            <Head title="Home | Event Ticketing Platform" />
+            <div className="container my-5">
+                <EventHeader
+                    keyword={keyword}
+                    onKeywordChange={onKeywordChangeHandler}
+                />
+                <EventData
+                    isFound={exist}
+                    totalFound={count}
+                    selectedSort={sortBy}
+                    onSelectedSort={onSelectedSortHandler}
+                />
+                <EventList events={foundEvents} />
+            </div>
+        </Authenticated>
     );
 }

@@ -1,0 +1,16 @@
+#warning-modal.modal {
+    height: min-content;
+}
+
+#warning-modal.modal.fade.show {
+    display: block;
+    z-index: 1;
+}
+
+#warning-modal .modal-content {
+    background: #fff3cd;
+}
+
+#warning-modal .modal-title {
+    font-size: 14px;
+}
